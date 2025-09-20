@@ -5,16 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Almacén de Repuestos - INATP SAS</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <!-- AOS Animations -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
-    /* ================== LOADER ================== */
- 
+   /* ================== LOADER ================== */
 #loader {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: linear-gradient(-45deg, #004aad, #ffcc00, #002147, #ffffff);
+  background: linear-gradient(-45deg, #004aad, #0a58ca, #002147, #ffffff);
   background-size: 400% 400%;
   animation: gradient 6s ease infinite;
   display: flex;
@@ -23,29 +21,20 @@
   z-index: 2000;
   flex-direction: column;
 }
-
 @keyframes gradient {
   0% {background-position: 0% 50%;}
   50% {background-position: 100% 50%;}
   100% {background-position: 0% 50%;}
 }
-
 .loader-circle {
   position: relative;
-  width: 250px;
-  height: 250px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 250px; height: 250px;
+  display: flex; justify-content: center; align-items: center;
 }
-
 .loader-logo {
-  width: 120px;
-  position: absolute;
-  z-index: 2;
-  filter: drop-shadow(0 0 10px rgba(0,0,0,0.6));
+  width: 120px; position: absolute; z-index: 2;
+  filter: drop-shadow(0 0 12px rgba(0,0,0,0.7));
 }
-
 .ring {
   position: absolute;
   border: 6px solid transparent;
@@ -53,376 +42,243 @@
   border-radius: 50%;
   animation: spin 2s linear infinite;
 }
-
-.ring1 {
-  width: 220px;
-  height: 220px;
-  animation-duration: 2.5s;
-}
-
-.ring2 {
-  width: 180px;
-  height: 180px;
-  border-top-color: #004aad;
-  animation-duration: 3.5s;
-  animation-direction: reverse;
-}
-
-.ring3 {
-  width: 140px;
-  height: 140px;
-  border-top-color: #ffffff;
-  animation-duration: 1.8s;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
+.ring1 { width: 220px; height: 220px; animation-duration: 2.5s; }
+.ring2 { width: 180px; height: 180px; border-top-color: #fff; animation-duration: 3.5s; animation-direction: reverse; }
+.ring3 { width: 140px; height: 140px; border-top-color: #004aad; animation-duration: 1.8s; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 .loader-text {
   margin-top: 30px;
   font-size: 1.6em;
   font-weight: bold;
   color: #fff;
   letter-spacing: 3px;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
   animation: blink 1.2s infinite alternate;
 }
+@keyframes blink { 50% {opacity: 0.5;} }
+#contenido { display: none; }
 
-@keyframes blink {
-  50% {opacity: 0.5;}
+/* ================== BASE ================== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f6fa;
+  color: #333;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-  /* Ocultar contenido mientras carga */
-  #contenido {
-    display: none;
+/* ================== NAVBAR ================== */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #004aad;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0; z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+nav .logo img { height: 50px; }
+nav ul {
+  list-style: none; display: flex; margin: 0; padding: 0;
+}
+nav ul li { margin-left: 25px; }
+nav ul li a {
+  text-decoration: none; color: #fff;
+  font-weight: 500; transition: 0.3s;
+  padding: 6px 10px; border-radius: 6px;
+}
+nav ul li a:hover { background: #ffcc00; color: #004aad; }
+.btn-login {
+  background: #ffcc00; color: #004aad;
+  padding: 8px 15px; border-radius: 5px;
+  font-weight: bold; transition: 0.3s;
+}
+.btn-login:hover { background: #fff; color: #004aad; }
+.menu-toggle { display: none; font-size: 1.8em; color: #fff; cursor: pointer; }
+
+/* ================== HERO ================== */
+.hero {
+  background: url("img/banner1 (2).jpg") no-repeat center center/cover;
+  height: 80vh; display: flex; justify-content: center; align-items: center;
+  text-align: center; color: white; position: relative;
+}
+.hero::after {
+  content: ""; position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%; background: rgba(0,0,0,0.55);
+}
+.hero-content { position: relative; z-index: 2; animation: fadeIn 2s ease; }
+.hero-content h1 { font-size: 3.2em; margin: 0; }
+.hero-content p { font-size: 1.2em; margin: 15px 0; }
+.hero-content a {
+  background: #ffcc00; color: #004aad;
+  padding: 12px 25px; border-radius: 8px;
+  text-decoration: none; font-weight: bold;
+  transition: transform 0.3s, background 0.3s;
+}
+.hero-content a:hover { background: #fff; color: #111; transform: scale(1.1); }
+@keyframes fadeIn { from {opacity: 0; transform: translateY(40px);} to {opacity: 1; transform: translateY(0);} }
+
+/* ================== SECCIONES ================== */
+section { padding: 60px 20px; text-align: center; }
+section h2 { margin-bottom: 25px; color: #004aad; }
+
+/* ================== PRODUCTOS ================== */
+.productos {
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); /* Siempre 3 columnas */
+  gap: 30px; 
+  margin-top: 30px;
+}
+.card {
+  background: #fff; 
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 20px; 
+  transition: 0.4s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card:hover { 
+  transform: translateY(-8px) scale(1.03); 
+  box-shadow: 0 8px 18px rgba(0,0,0,0.2); 
+}
+.card img { 
+  max-width: 100%; 
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px; 
+  margin-bottom: 15px; 
+}
+.card h3 {
+  margin: 10px 0 5px 0;
+  color: #004aad;
+}
+.card p {
+  font-size: 0.95em;
+  color: #444;
+}
+
+/* ================== NOSOTROS ================== */
+.nosotros-imgs {
+  display: flex; justify-content: center; gap: 20px;
+  margin-top: 20px; flex-wrap: wrap;
+}
+.nosotros-imgs img {
+  width: 45%; max-width: 400px; border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+  transition: transform 0.4s;
+}
+.nosotros-imgs img:hover { transform: scale(1.05) rotate(-2deg); }
+
+/* ================== MAPAS ================== */
+.mapas {
+  display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px;
+}
+.mapa {
+  flex: 1; min-width: 280px; max-width: 320px; transition: transform 0.3s;
+}
+.mapa:hover { transform: translateY(-5px); }
+.mapa iframe {
+  width: 100%; height: 220px; border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+/* ================== CARRUSEL ================== */
+.marcas-carousel {
+  overflow: hidden; 
+  width: 100%; 
+  max-width: 1200px;
+  margin: 40px auto 20px auto;
+  background: #fff; /* fondo blanco */
+  border-radius: 12px;
+  padding: 15px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.carousel-track {
+  display: flex; 
+  gap: 40px; 
+  animation: scroll 25s linear infinite; 
+  width: max-content;
+}
+.carousel-track img {
+  height: 80px; 
+  max-width: 120px; 
+  object-fit: contain;
+  transition: 0.3s;
+}
+.carousel-track img:hover { transform: scale(1.1); }
+@keyframes scroll { 
+  0% { transform: translateX(0); } 
+  100% { transform: translateX(-50%); } 
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 1024px) {
+  .productos {
+    grid-template-columns: repeat(2, 1fr); /* En tablets 2 columnas */
   }
+}
+@media (max-width: 768px) {
+  .productos {
+    grid-template-columns: 1fr; /* En celular 1 columna */
+  }
+}
+/* ================== FOOTER ================== */
+footer {
+  background: linear-gradient(to top, #004aad, #eaeaea);
+  text-align: center; padding: 40px 15px; margin-top: 30px; color: #111;
+}
+footer h3 { margin-bottom: 20px; font-size: 1.4em; color: #fff; }
+footer p { margin-top: 15px; font-size: 0.9em; color: #fff; }
 
-    /* ================== ESTILOS BASE ================== */
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-      overflow-x: hidden;
-    }
+/* ================== BOTÓN WHATSAPP ================== */
+.whatsapp-float {
+  position: fixed; width: 60px; height: 60px;
+  bottom: 20px; right: 20px;
+  background-color: #25D366; color: #fff;
+  border-radius: 50%; text-align: center;
+  font-size: 30px; box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  z-index: 1000; transition: 0.3s;
+}
+.whatsapp-float:hover { transform: scale(1.1); }
+.whatsapp-float i { margin-top: 15px; }
 
-    /* ================== NAVBAR ================== */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #111;
-      padding: 15px 30px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+/* ================== RESPONSIVE ================== */
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  nav ul {
+    position: absolute; top: 60px; right: 0;
+    background: #004aad; flex-direction: column;
+    width: 220px; display: none; padding: 20px 0;
+    border-radius: 0 0 0 12px;
+  }
+  nav ul.show { display: flex; }
+  nav ul li { margin: 12px 0; text-align: center; }
+}
 
-    nav .logo {
-      color: #0015ff;
-      font-size: 1.5em;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav ul li {
-      margin-left: 25px;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: #0015ff;
-    }
-
-    .btn-login {
-      background-color: #0015ff;
-      color: #fff;
-      padding: 8px 15px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .btn-login:hover {
-      background-color: #fff;
-      color: #111;
-    }
-
-    /* Menú hamburguesa */
-    .menu-toggle {
-      display: none;
-      font-size: 1.8em;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    /* ================== HERO ================== */
-    .hero {
-      background: url("img/banner1 (2).jpg") no-repeat center center/cover;
-      height: 80vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      position: relative;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-content h1 {
-      font-size: 3em;
-      margin: 0;
-    }
-
-    .hero-content p {
-      font-size: 1.2em;
-      margin: 15px 0;
-    }
-
-    .hero-content a {
-      background-color: #0015ff;
-      color: #fff;
-      padding: 12px 25px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: transform 0.3s, background 0.3s;
-    }
-
-    .hero-content a:hover {
-      background-color: #fff;
-      color: #111;
-      transform: scale(1.1);
-    }
-
-    /* ================== SECCIONES ================== */
-    section {
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    section h2 {
-      margin-bottom: 20px;
-      color: #111;
-    }
-
-    /* ================== PRODUCTOS ================== */
-    .productos {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      padding: 20px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-    }
-
-    .card img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin-bottom: 15px;
-    }
-
-    /* ================== NOSOTROS ================== */
-    .nosotros-imgs {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
-
-    .nosotros-imgs img {
-      width: 45%;
-      max-width: 400px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    /* ================== MAPAS ================== */
-    .mapas {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-
-    .mapa {
-      flex: 1;
-      min-width: 280px;
-      max-width: 320px;
-    }
-
-    .mapa iframe {
-      width: 100%;
-      height: 220px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    /* ================== CARRUSEL ================== */
-    .marcas-carousel {
-      overflow: hidden;
-      width: 100%;
-      max-width: 1200px;
-      margin: 40px auto 20px auto;
-    }
-
-    .carousel-track {
-      display: flex;
-      gap: 40px;
-      animation: scroll 25s linear infinite;
-      width: max-content;
-    }
-
-    .carousel-track img {
-      height: 80px;
-      max-width: 120px;
-      object-fit: contain;
-    }
-
-    @keyframes scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* ================== FOOTER ================== */
-    footer {
-      background: #ffffff;
-      text-align: center;
-      padding: 30px 15px;
-      margin-top: 30px;
-    }
-
-    footer h3 {
-      margin-bottom: 20px;
-      font-size: 1.4em;
-      color: #0015ff;
-    }
-
-    footer p {
-      margin-top: 15px;
-      font-size: 0.9em;
-      color: #aaa;
-    }
-
-    /* ================== BOTÓN WHATSAPP ================== */
-    .whatsapp-float {
-      position: fixed;
-      width: 60px;
-      height: 60px;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25D366;
-      color: #fff;
-      border-radius: 50px;
-      text-align: center;
-      font-size: 30px;
-      box-shadow: 2px 2px 5px #999;
-      z-index: 1000;
-    }
-
-    .whatsapp-float i {
-      margin-top: 15px;
-    }
-
-    /* ================== RESPONSIVE ================== */
-    @media (max-width: 900px) {
-      .productos {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .productos {
-        grid-template-columns: 1fr;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      nav ul {
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background: #111;
-        flex-direction: column;
-        width: 200px;
-        display: none;
-        padding: 10px 0;
-      }
-
-      nav ul li {
-        margin: 15px 0;
-        text-align: center;
-      }
-
-      nav ul.show {
-        display: flex;
-      }
-    }
   </style>
 </head>
 <body>
 
   <!-- ============= LOADER ============= -->
-<div id="loader">
-  <div class="loader-circle">
-    <div class="ring ring1"></div>
-    <div class="ring ring2"></div>
-    <div class="ring ring3"></div>
-    <img src="img/LogoInapt.png" alt="Logo" class="loader-logo">
+  <div id="loader">
+    <div class="loader-circle">
+      <div class="ring ring1"></div>
+      <div class="ring ring2"></div>
+      <div class="ring ring3"></div>
+      <img src="img/LogoInapt.png" alt="Logo" class="loader-logo">
+    </div>
+    <div class="loader-text">Cargando...</div>
   </div>
-  <div class="loader-text">Cargando...</div>
-</div>
-
-
 
   <!-- ============= CONTENIDO ============= -->
   <div id="contenido">
-    <!-- ============= NAVBAR ============= -->
+    <!-- NAVBAR -->
     <nav data-aos="fade-down">
-      <div class="logo" data-aos="fade-right">Inatp SAS</div>
+      <div class="logo"><img src="img/LogoInapt.png" alt="Logo INATP"></div>
       <i class="fas fa-bars menu-toggle" data-aos="fade-left"></i>
       <ul>
         <li><a href="#inicio" data-aos="zoom-in">Inicio</a></li>
@@ -433,7 +289,7 @@
       </ul>
     </nav>
 
-    <!-- ============= HERO ============= -->
+    <!-- HERO -->
     <section id="inicio" class="hero">
       <div class="hero-content" data-aos="zoom-in">
         <h1 data-aos="fade-up">Repuestos Automotrices</h1>
@@ -443,75 +299,61 @@
       </div>
     </section>
 
-    <!-- ============= NOSOTROS ============= -->
+    <!-- NOSOTROS -->
     <section id="nosotros">
       <h2 data-aos="fade-up">Sobre Nosotros</h2>
-      <p data-aos="fade-up" data-aos-delay="200">
-        Somos un almacén especializado en repuestos para todo tipo de vehículos...
-      </p>
+      <p data-aos="fade-up" data-aos-delay="200">Somos un almacén especializado en repuestos para todo tipo de vehículos...</p>
       <div class="nosotros-imgs">
         <img src="img/LogoInapt.png" alt="Almacén INATP SAS" data-aos="fade-right">
         <img src="img/Equipo de trabajo.jpg" alt="Equipo de trabajo INATP SAS" data-aos="fade-left">
       </div>
     </section>
 
-    <!-- ============= PRODUCTOS ============= -->
+    <!-- PRODUCTOS -->
     <section id="productos">
       <h2 data-aos="fade-up">Nuestros Productos</h2>
       <div class="productos">
         <div class="card" data-aos="flip-left">
-          <img src="img/mangueras.jpg" alt="Mangueras">
-          <h3>Mangueras</h3>
-          <p>Alta resistencia y durabilidad para todo tipo de autos.</p>
+          <img src="img/mangueras.jpg" alt="Mangueras"><h3>Mangueras</h3><p>Alta resistencia y durabilidad.</p>
         </div>
         <div class="card" data-aos="flip-up">
-          <img src="img/tubo.png" alt="Tubos">
-          <h3>Tubos de Calefacción</h3>
-          <p>Repuestos confiables que garantizan un buen rendimiento.</p>
+          <img src="img/tubo.png" alt="Tubos"><h3>Tubos de Calefacción</h3><p>Repuestos confiables y seguros.</p>
         </div>
         <div class="card" data-aos="flip-right">
-          <img src="img/bujes.png" alt="Bujes">
-          <h3>Bujes</h3>
-          <p>Piezas de precisión para mejorar la estabilidad del vehículo.</p>
+          <img src="img/bujes.png" alt="Bujes"><h3>Bujes</h3><p>Mejoran estabilidad del vehículo.</p>
         </div>
         <div class="card" data-aos="zoom-in-up">
-          <img src="img/Radiador.jpg" alt="Radiadores">
-          <h3>Radiadores</h3>
-          <p>Sistemas de enfriamiento confiables para todo tipo de motor.</p>
+          <img src="img/Radiador.jpg" alt="Radiadores"><h3>Radiadores</h3><p>Sistemas de enfriamiento confiables.</p>
         </div>
         <div class="card" data-aos="zoom-in-up" data-aos-delay="200">
-          <img src="img/tanques de radiador.jpg" alt="Tanques de Radiador">
-          <h3>Tanques de Radiador</h3>
-          <p>Tanques resistentes y de alta calidad para tu vehículo.</p>
+          <img src="img/tanques de radiador.jpg" alt="Tanques"><h3>Tanques de Radiador</h3><p>Resistentes y de alta calidad.</p>
         </div>
-        <div class="card" data-aos="zoom-in-up" data-aos-delay="200">
-          <img src="img/tapa.jpg" alt="Tapas de radiador">
-          <h3>Tapas para Radiador de Radiador</h3>
-          <p>Tanques resistentes y de alta calidad para tu vehículo.</p>
+        <div class="card" data-aos="zoom-in-up" data-aos-delay="400">
+          <img src="img/tapa.jpg" alt="Tapas"><h3>Tapas para Radiador</h3><p>Seguridad y durabilidad asegurada.</p>
         </div>
       </div>
     </section>
 
-    <!-- ============= CONTACTO MAPAS ============= -->
+    <!-- MAPAS -->
     <section id="contacto">
       <h2 data-aos="fade-up">Nuestras Sedes</h2>
       <div class="mapas">
         <div class="mapa" data-aos="zoom-in">
-          <iframe src="https://www.google.com/maps/embed?pb=!4v1758344893376!6m8!1m7!1swfpSU4uywe-KifJ_FUDm2w!2m2!1d4.437588537227075!2d-75.22750452818455!3f248.6516160442777!4f-5.48723276430691!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!4v1758344893376!6m8!1m7!1swfpSU4uywe-KifJ_FUDm2w!2m2!1d4.437588537227075!2d-75.22750452818455!3f248.65!4f-5.48!5f0.78"></iframe>
           <p>Sede 1 - 26-4 Tamana</p>
         </div>
         <div class="mapa" data-aos="zoom-in" data-aos-delay="200">
-          <iframe src="https://www.google.com/maps/embed?pb=!4v1758345020149!6m8!1m7!1sEhe-D23Fqpf-HgWROcMaug!2m2!1d4.440097154560013!2d-75.22946677469137!3f117.81800508369047!4f-7.175174748503693!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!4v1758345020149!6m8!1m7!1sEhe-D23Fqpf-HgWROcMaug!2m2!1d4.440097!2d-75.229466!3f117.81!4f-7.17!5f0.78"></iframe>
           <p>Sede 2 - 23-5</p>
         </div>
         <div class="mapa" data-aos="zoom-in" data-aos-delay="400">
-          <iframe src="https://www.google.com/maps/embed?pb=!4v1758345246338!6m8!1m7!1sVHWTuYiIrugMUoBWY5FX3Q!2m2!1d4.440562896377015!2d-75.22740784410442!3f328.5795438554281!4f3.449381764098419!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!4v1758345246338!6m8!1m7!1sVHWTuYiIrugMUoBWY5FX3Q!2m2!1d4.440562!2d-75.227407!3f328.57!4f3.44!5f0.78"></iframe>
           <p>Sede 3 - Carrera Quinta</p>
         </div>
       </div>
     </section>
 
-    <!-- ============= FOOTER + CARRUSEL ============= -->
+    <!-- FOOTER + CARRUSEL -->
     <footer>
       <h3 data-aos="fade-up">Trabajamos con las mejores marcas</h3>
       <div class="marcas-carousel" data-aos="fade-up" data-aos-delay="200">
@@ -521,7 +363,7 @@
           <img src="img/logomazda.jpg" alt="Mazda">
           <img src="img/logohonda.jpg" alt="Honda">
           <img src="img/logonissann.jpg" alt="Nissan">
-          <!-- duplicados para scroll infinito -->
+          <!-- duplicados -->
           <img src="img/LogoToyota.jpg" alt="Toyota">
           <img src="img/logochevorelt.jpg" alt="Chevrolet">
           <img src="img/logomazda.jpg" alt="Mazda">
@@ -529,43 +371,31 @@
           <img src="img/logonissann.jpg" alt="Nissan">
         </div>
       </div>
-      <p data-aos="fade-up" data-aos-delay="400">&copy; 2025 INATP SAS - Todos los derechos reservados.</p>
+      <p>© 2025 INATP SAS - Todos los derechos reservados</p>
     </footer>
 
-    <!-- Botón de WhatsApp -->
-    <a href="https://wa.me/573168424357" class="whatsapp-float" target="_blank" data-aos="zoom-in-up">
-      <i class="fa-brands fa-whatsapp"></i>
+    <!-- BOTÓN WHATSAPP -->
+    <a href="https://wa.me/573001234567" class="whatsapp-float" target="_blank">
+      <i class="fab fa-whatsapp"></i>
     </a>
   </div>
 
-  <!-- Script menú hamburguesa -->
+  <!-- Scripts -->
   <script>
     const menuToggle = document.querySelector(".menu-toggle");
     const navMenu = document.querySelector("nav ul");
+    menuToggle.addEventListener("click", () => navMenu.classList.toggle("show"));
 
-    menuToggle.addEventListener("click", () => {
-      navMenu.classList.toggle("show");
-    });
-
-    // Loader control
     window.addEventListener("load", () => {
       const loader = document.getElementById("loader");
       const contenido = document.getElementById("contenido");
-
       setTimeout(() => {
         loader.style.display = "none";
         contenido.style.display = "block";
-      }, 2500); // 2.5s de loader
+      }, 2500);
     });
   </script>
-
-  <!-- AOS Animations -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 1200,
-      once: false
-    });
-  </script>
+  <script>AOS.init({ duration: 1200, once: false });</script>
 </body>
 </html>
