@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Almacén de Repuestos - INATP SAS</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- AOS Animations -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
     /* ================== ESTILOS BASE ================== */
     body {
@@ -184,12 +186,34 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
+    /* ================== MAPAS ================== */
+    .mapas {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .mapa {
+      flex: 1;
+      min-width: 280px;
+      max-width: 320px;
+    }
+
+    .mapa iframe {
+      width: 100%;
+      height: 220px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
     /* ================== CARRUSEL ================== */
     .marcas-carousel {
       overflow: hidden;
       width: 100%;
       max-width: 1200px;
-      margin: 0 auto 20px auto;
+      margin: 40px auto 20px auto;
     }
 
     .carousel-track {
@@ -208,18 +232,6 @@
     @keyframes scroll {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
-    }
-
-    /* ================== MAPA ================== */
-    .mapa {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .mapa iframe {
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     /* ================== FOOTER ================== */
@@ -302,68 +314,108 @@
 </head>
 <body>
 
-  <nav>
-    <div class="logo">Inatp SAS</div>
-    <i class="fas fa-bars menu-toggle"></i>
+  <!-- ============= NAVBAR ============= -->
+  <nav data-aos="fade-down">
+    <div class="logo" data-aos="fade-right">Inatp SAS</div>
+    <i class="fas fa-bars menu-toggle" data-aos="fade-left"></i>
     <ul>
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#nosotros">Nosotros</a></li>
-      <li><a href="#productos">Productos</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-      <li><a href="login.html" class="btn-login">Ingresar</a></li>
+      <li><a href="#inicio" data-aos="zoom-in">Inicio</a></li>
+      <li><a href="#nosotros" data-aos="zoom-in" data-aos-delay="100">Nosotros</a></li>
+      <li><a href="#productos" data-aos="zoom-in" data-aos-delay="200">Productos</a></li>
+      <li><a href="#contacto" data-aos="zoom-in" data-aos-delay="300">Contacto</a></li>
+      <li><a href="login.html" class="btn-login" data-aos="zoom-in" data-aos-delay="400">Ingresar</a></li>
     </ul>
   </nav>
 
+  <!-- ============= HERO ============= -->
   <section id="inicio" class="hero">
-    <div class="hero-content">
-      <h1>Repuestos Automotrices</h1>
-      <p>Calidad, confianza y el mejor precio para tu vehículo</p>
+    <div class="hero-content" data-aos="zoom-in">
+      <h1 data-aos="fade-up">Repuestos Automotrices</h1>
+      <p data-aos="fade-up" data-aos-delay="200">Calidad, confianza y el mejor precio para tu vehículo</p>
       <br>
-      <a href="#productos">Ver Productos</a>
+      <a href="#productos" data-aos="flip-up" data-aos-delay="400">Ver Productos</a>
     </div>
   </section>
 
+  <!-- ============= NOSOTROS ============= -->
   <section id="nosotros">
-    <h2>Sobre Nosotros</h2>
-    <p>Somos un almacén especializado en repuestos para todo tipo de vehículos...</p>
+    <h2 data-aos="fade-up">Sobre Nosotros</h2>
+    <p data-aos="fade-up" data-aos-delay="200">
+      Somos un almacén especializado en repuestos para todo tipo de vehículos...
+    </p>
     <div class="nosotros-imgs">
-      <img src="img/LogoInapt.png" alt="Almacén INATP SAS">
-      <img src="img/Equipo de trabajo.jpg" alt="Equipo de trabajo INATP SAS">
+      <img src="img/LogoInapt.png" alt="Almacén INATP SAS" data-aos="fade-right">
+      <img src="img/Equipo de trabajo.jpg" alt="Equipo de trabajo INATP SAS" data-aos="fade-left">
     </div>
   </section>
 
+  <!-- ============= PRODUCTOS ============= -->
   <section id="productos">
-    <h2>Nuestros Productos</h2>
+    <h2 data-aos="fade-up">Nuestros Productos</h2>
     <div class="productos">
-      <!-- tarjetas de productos -->
-      <div class="card">
+      <div class="card" data-aos="flip-left">
         <img src="img/mangueras.jpg" alt="Mangueras">
         <h3>Mangueras</h3>
         <p>Alta resistencia y durabilidad para todo tipo de autos.</p>
       </div>
-      <div class="card">
+      <div class="card" data-aos="flip-up">
         <img src="img/tubo.png" alt="Tubos">
         <h3>Tubos de Calefacción</h3>
         <p>Repuestos confiables que garantizan un buen rendimiento.</p>
       </div>
-      <div class="card">
+      <div class="card" data-aos="flip-right">
         <img src="img/bujes.png" alt="Bujes">
         <h3>Bujes</h3>
         <p>Piezas de precisión para mejorar la estabilidad del vehículo.</p>
       </div>
-    </div>
-  </section>
-  
-  <section id="contacto">
-    <h2>Visítanos</h2>
-    <div class="mapa">
-      <iframe src="https://www.google.com/maps/embed?..." height="400" loading="lazy"></iframe>
+      <div class="card" data-aos="zoom-in-up">
+        <img src="img/Radiador.jpg" alt="Radiadores">
+        <h3>Radiadores</h3>
+        <p>Sistemas de enfriamiento confiables para todo tipo de motor.</p>
+      </div>
+      <div class="card" data-aos="zoom-in-up" data-aos-delay="200">
+        <img src="img/tanques de radiador.jpg" alt="Tanques de Radiador">
+        <h3>Tanques de Radiador</h3>
+        <p>Tanques resistentes y de alta calidad para tu vehículo.</p>
+      </div>
+      <div class="card" data-aos="zoom-in-up" data-aos-delay="200">
+        <img src="img/tapa.jpg" alt="Tapas de radiador">
+        <h3>Tapas para Radiador de Radiador</h3>
+        <p>Tanques resistentes y de alta calidad para tu vehículo.</p>
+      </div>
     </div>
   </section>
 
+  <!-- ============= CONTACTO MAPAS ============= -->
+  <section id="contacto">
+    <h2 data-aos="fade-up">Nuestras Sedes</h2>
+    <div class="mapas">
+      <div class="mapa" data-aos="zoom-in">
+        <iframe src="https://www.google.com/maps/embed?pb=!4v1758344893376!6m8!1m7!1swfpSU4uywe-KifJ_FUDm2w!2m2!1d4.437588537227075!2d-75.22750452818455!3f248.6516160442777!4f-5.48723276430691!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <p>Sede 1 - 26-4 Tamana</p>
+      </div>
+      <div class="mapa" data-aos="zoom-in" data-aos-delay="200">
+        <iframe src="https://www.google.com/maps/embed?pb=!4v1758345020149!6m8!1m7!1sEhe-D23Fqpf-HgWROcMaug!2m2!1d4.440097154560013!2d-75.22946677469137!3f117.81800508369047!4f-7.175174748503693!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <p>Sede 2 - 23-5</p>
+      </div>
+      <div class="mapa" data-aos="zoom-in" data-aos-delay="400">
+        <iframe src="https://www.google.com/maps/embed?pb=!4v1758345246338!6m8!1m7!1sVHWTuYiIrugMUoBWY5FX3Q!2m2!1d4.440562896377015!2d-75.22740784410442!3f328.5795438554281!4f3.449381764098419!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <p>Sede 3 - Carrera Quinta</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= FOOTER + CARRUSEL ============= -->
   <footer>
-    <div class="marcas-carousel">
+    <h3 data-aos="fade-up">Trabajamos con las mejores marcas</h3>
+    <div class="marcas-carousel" data-aos="fade-up" data-aos-delay="200">
       <div class="carousel-track">
+        <img src="img/LogoToyota.jpg" alt="Toyota">
+        <img src="img/logochevorelt.jpg" alt="Chevrolet">
+        <img src="img/logomazda.jpg" alt="Mazda">
+        <img src="img/logohonda.jpg" alt="Honda">
+        <img src="img/logonissann.jpg" alt="Nissan">
+        <!-- duplicados para scroll infinito -->
         <img src="img/LogoToyota.jpg" alt="Toyota">
         <img src="img/logochevorelt.jpg" alt="Chevrolet">
         <img src="img/logomazda.jpg" alt="Mazda">
@@ -371,10 +423,11 @@
         <img src="img/logonissann.jpg" alt="Nissan">
       </div>
     </div>
+    <p data-aos="fade-up" data-aos-delay="400">&copy; 2025 INATP SAS - Todos los derechos reservados.</p>
   </footer>
 
   <!-- Botón de WhatsApp -->
-  <a href="https://wa.me/573168424357" class="whatsapp-float" target="_blank">
+  <a href="https://wa.me/573168424357" class="whatsapp-float" target="_blank" data-aos="zoom-in-up">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
@@ -387,5 +440,15 @@
       navMenu.classList.toggle("show");
     });
   </script>
+
+  <!-- AOS Animations -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1200,
+      once: false
+    });
+  </script>
 </body>
 </html>
+
